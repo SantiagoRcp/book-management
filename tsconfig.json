@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Compila a una versión moderna de JS
+    "module": "CommonJS", // Usa módulos CommonJS, compatibles con Node.js
+    "moduleResolution": "node", // Resolución de módulos estilo Node.js
+    "rootDir": "./src", // Carpeta fuente del proyecto
+    "outDir": "./dist", // Carpeta de salida con archivos compilados
+    "strict": true, // Activa todas las comprobaciones estrictas
+    "esModuleInterop": true, // Permite importar módulos CommonJS con 'import'
+    "forceConsistentCasingInFileNames": true, // Evita errores de mayúsculas/minúsculas en imports
+    "skipLibCheck": true, // Ignora verificación de tipos en dependencias
+    "resolveJsonModule": true, // Permite importar archivos .json
+    "types": ["node", "express"] // Carga definiciones de tipos para Node y Express
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
