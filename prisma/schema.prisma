@@ -13,3 +13,73 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+enum Role {
+  Admin
+  User
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(User)
+  loans     Loan[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Author {
+  id        Int      @id @default(autoincrement())
+  name      String
+  bio       String?
+  books     Book[]
+  createdAt DateTime @default(now())
+
+  @@map("authors")
+}
+
+model Book {
+  id            Int      @id @default(autoincrement())
+  title         String
+  publishedDate DateTime @map("published_date")
+  isbn          String   @unique
+  summary       String?
+  genres        Genre[]
+  authorId      Int      @map("author_id")
+  author        Author   @relation(fields: [authorId], references: [id])
+  stock         Int      @default(0)
+  loans         Loan[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("books")
+}
+
+model Genre {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  books     Book[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("genres")
+}
+
+model Loan {
+  id         Int       @id @default(autoincrement())
+  bookId     Int       @map("book_id")
+  book       Book      @relation(fields: [bookId], references: [id])
+  userId     Int       @map("user_id")
+  user       User      @relation(fields: [userId], references: [id])
+  loanDate   DateTime  @default(now()) @map("loan_date")
+  returnDate DateTime? @map("return_date")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@map("loans")
+}
