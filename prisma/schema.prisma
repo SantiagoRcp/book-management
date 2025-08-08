@@ -33,7 +33,7 @@ model User {
 
 model Author {
   id        Int      @id @default(autoincrement())
-  name      String
+  name      String   @unique
   bio       String?
   books     Book[]
   createdAt DateTime @default(now())
@@ -43,7 +43,7 @@ model Author {
 
 model Book {
   id            Int      @id @default(autoincrement())
-  title         String
+  title         String   @unique
   publishedDate DateTime @map("published_date")
   isbn          String   @unique
   summary       String?

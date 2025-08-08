@@ -8,6 +8,7 @@ export function zoodMiddleware(schema: z.ZodTypeAny) {
       return res.status(400).json({ error: result.error.issues.map((issue) => issue.message) });
     }
 
+    // objeto con dos propiedades succes: bool, data: {los datos validados}
     req.body = result;
     next();
   };

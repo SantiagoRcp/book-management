@@ -1,6 +1,6 @@
 import { Role } from "@prisma/client";
 import prisma from "../config/prisma";
-import { LoginUser, RegisterUser } from "../interfaces/auth.interface";
+import { JwtPayload, LoginUser, RegisterUser } from "../interfaces/auth.interface";
 import { comparePassword, hashPassword } from "../utils/bcryptjs";
 import { AppError } from "../utils/appError";
 import { generateToken } from "../utils/jwt.utils";
@@ -45,7 +45,12 @@ export class AuthService {
       throw new AppError("Invalid credentials", 401);
     }
 
-    const token = generateToken(user);
+    const payload: JwtPayload = {
+      id: user.id,
+      email: user.email,
+      role: user.role,
+    };
+    const token = generateToken(payload);
 
     return {
       message: "Successful login.",

@@ -2,7 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { SECRET } from "../config/index";
 import { AppError } from "../utils/appError";
+import { JwtPayload } from "../interfaces/auth.interface";
 
+// VErifica que exista un Token
 export function authorizedMiddleware(req: Request, res: Response, next: NextFunction) {
   try {
     const secret: jwt.Secret = SECRET;
