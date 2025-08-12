@@ -6,8 +6,8 @@ const RegisteAuthorValid = z.object({
 });
 
 const UpdateAuthorValid = z.object({
-  name: z.string().min(5).trim().optional,
-  bio: z.string().trim().optional,
+  name: z.string().min(5).trim().optional(),
+  bio: z.string().trim().optional(),
 });
 
 type RegisteAuthorValid = z.infer<typeof RegisteAuthorValid>;
