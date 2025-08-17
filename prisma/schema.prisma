@@ -18,6 +18,11 @@ enum Role {
   User
 }
 
+enum Status {
+  Borrowed
+  Returned
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String
@@ -75,6 +80,7 @@ model Loan {
   book       Book      @relation(fields: [bookId], references: [id])
   userId     Int       @map("user_id")
   user       User      @relation(fields: [userId], references: [id])
+  status     Status    @default(Borrowed)
   loanDate   DateTime  @default(now()) @map("loan_date")
   returnDate DateTime? @map("return_date")
   createdAt  DateTime  @default(now())
