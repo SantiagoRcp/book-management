@@ -39,7 +39,7 @@ limpia y el uso de transacciones de base de datos para operaciones críticas.
   - TypeScript: Lenguaje que añade tipado estático a JavaScript.
   - Prisma ORM: ORM de próxima generación para interacción con la base de datos (MySQL).
   - MySQL: Base de datos relacional robusta.
-  -Zod: Biblioteca para la validación de esquemas de datos.
+  - Zod: Biblioteca para la validación de esquemas de datos.
   - JSON Web Tokens (JWT): Para autenticación y autorización segura.
   - Bcrypt.js: Para el hashing de contraseñas.
   - Dotenv: Para la gestión de variables de entorno.
