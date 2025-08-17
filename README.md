@@ -61,8 +61,8 @@ Prerrequisitos
 
 1. Clonar el Repositorio
 ``` bash
-   git clone https://github.com/tu-usuario/bookwave-api.git # Reemplaza con la URL de tu repositorio
-   cd bookwave-api
+   git clone https://github.com/SantiagoRcp/book-management.git
+   cd book-management
 ```
 2. Instalar Dependencias
 ``` bash
